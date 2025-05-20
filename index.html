@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nerdy Minesweeper</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap">
+</head>
+<body>
+    <div class="header-container">
+        <h1>Nerdy Minesweeper</h1>
+        
+        <div class="game-controls">
+            <div class="difficulty-selector">
+                <button id="beginner" class="control-button">Beginner</button>
+                <button id="intermediate" class="control-button">Intermediate</button>
+                <button id="expert" class="control-button">Expert</button>
+                <button id="restart" class="control-button restart">Restart</button>
+            </div>
+            <div class="game-info">
+                <div id="mines-count" class="info-display"><span class="icon">💣</span><span id="mines-value">0</span></div>
+                <div id="timer" class="info-display"><span class="icon">⏱️</span><span id="timer-value">0</span></div>
+                <button id="sound-toggle" class="sound-button" title="Toggle Sound">🔊</button>
+            </div>
+        </div>
+        
+        <div class="custom-function-section">
+            <h2>Custom Display Function</h2>
+            
+            <div class="function-controls">
+                <div class="preset-functions">
+                    <label for="preset-select">Preset Display:</label>
+                    <select id="preset-select" class="modern-select">
+                        <option value="default">Default (Numbers)</option>
+                        <option value="squared">Squared Values</option>
+                        <option value="letters">Letters (A-H)</option>
+                        <option value="roman">Roman Numerals</option>
+                        <option value="emoji">Emoji Scale</option>
+                    </select>
+                </div>
+                
+                <div class="custom-editor">
+                    <label for="custom-function">Custom Function:</label>
+                    <input type="text" id="custom-function" class="modern-input" placeholder="Enter expression (e.g., x * 2, x / 2, ['💣','⚠️','❗'][x-1])">
+                    <div class="editor-controls">
+                        <button id="apply-function" class="control-button apply">Apply</button>
+                        <button id="test-function" class="control-button test">Test</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div id="game-board" class="game-board"></div>
+    </div>
+    
+    <!-- Game Over Modal -->
+    <div id="game-over-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="game-result">Game Over</h2>
+            <div class="stats-container">
+                <div class="stat">
+                    <span class="stat-label">Time:</span>
+                    <span id="final-time">0 seconds</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Difficulty:</span>
+                    <span id="final-difficulty">Beginner</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Cells Revealed:</span>
+                    <span id="final-revealed">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Mines Flagged:</span>
+                    <span id="final-flagged">0</span>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button id="play-again" class="control-button">Play Again</button>
+                <button id="change-difficulty" class="control-button">Change Difficulty</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Audio elements for sound effects -->
+    <audio id="click-sound" src="sounds/click.mp3" preload="auto"></audio>
+    <audio id="flag-sound" src="sounds/flag.mp3" preload="auto"></audio>
+    <audio id="explosion-sound" src="sounds/explosion.mp3" preload="auto"></audio>
+    <audio id="win-sound" src="sounds/win.mp3" preload="auto"></audio>
+    
+    <script src="script.js"></script>
+</body>
+</html>
